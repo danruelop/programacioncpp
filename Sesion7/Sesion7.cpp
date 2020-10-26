@@ -1,40 +1,8 @@
-// Practica9.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Sesion7.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>
-class CListNode
-{
-	CListNode(const char*);
-	const char* data;
-	CListNode* next;
-};
 
-class CList
-{
-public:
-	CList();
-
-	~CList();
-	
-	intSize();
-
-	// devuelve posición donde inserte el nodo... size
-	// A parte de añadir el nodo debería hacer ++m_uSize
-	int Push(const char*);
-
-	const char* First(); // m_pCurrentNode = m_pFirstNode;
-	const char* Next(); // m_CurrentNode = m_pCurrentNode.next;
-
-	// A parte de añadir el nodo debería hacer --m_uSize
-	const char* Pop();
-
-private:
-	unsigned int m_uSize = 0;
-	CListNode* m_pFirstNode = nullptr;
-
-	CListNode* m_pCurrentNode = nullptr;
-
-};
 int main()
 {
     std::cout << "Hello World!\n";
