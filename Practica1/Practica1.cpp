@@ -24,8 +24,19 @@ unsigned int GetNumBullets(unsigned int _uValue)
 // return nuevo _uValue con las balas añadidas
 unsigned int AddBullets(unsigned int _uValue, unsigned int _uBullets)
 {
+	
 	unsigned int uNumOfBullets = GetNumBullets(_uValue);
-	unsigned int uNewBullets = uNumOfBullets + _uBullets;
+
+	unsigned int uNewBullets;
+
+	if ((uNumOfBullets + _uBullets > 255))
+	{
+		uNewBullets = 255;
+	} else //prueba gitbash
+	{
+		uNewBullets = uNumOfBullets + _uBullets;
+	}
+	
 	unsigned int uTemp = _uValue & MASK_RESETBULLETS;
 	unsigned int uNewBulletsDesplazadas = uNewBullets << 16;
 	// Para sumar a nivel de bits hay que hacerlo con un OR
@@ -48,14 +59,14 @@ unsigned int ActivateInfiniteBullets(unsigned int _uValue)
 int main()
 {
 	unsigned int uValor(0x8F252001);
-	printf(" Número de balas: %d\n",GetNumBullets(uValor));
+	printf(" Número de balas: %d\n ",GetNumBullets(uValor));
 
-	unsigned int uValorConNuevasBalas = AddBullets(uValor, 30);
-	printf(" Nuevo número de balas: %d\n", GetNumBullets(uValorConNuevasBalas));
+	unsigned int uValorConNuevasBalas = AddBullets(uValor, 300);
+	printf(" Nuevo número de balas: %d\n ", GetNumBullets(uValorConNuevasBalas));
 
-	printf(" Está activado el modo balas infinitas ? %d\n", IsInfiniteBulletsActivated(uValor));
+	printf(" Está activado el modo balas infinitas ? %d\n ", IsInfiniteBulletsActivated(uValor));
 
-	printf("Y ahora ? %d\n", IsInfiniteBulletsActivated(ActivateInfiniteBullets(uValorConNuevasBalas)));
+	printf("Y ahora ? %d\n ", IsInfiniteBulletsActivated(ActivateInfiniteBullets(uValorConNuevasBalas)));
 
 
 	
